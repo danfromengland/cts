@@ -267,7 +267,7 @@ p  { line-height: 1.7; }
 #navWeatherTemp { color: var(--white); }
 
 .nav-cta {
-  background: #39ff14;
+  background: #7dea4a;
   color: var(--ink);
   border: none;
   padding: 9px 18px;
@@ -278,7 +278,7 @@ p  { line-height: 1.7; }
   transition: background var(--t), transform var(--t);
   white-space: nowrap;
 }
-.nav-cta:hover { background: #2ce600; transform: translateY(-1px); }
+.nav-cta:hover { background: #63df2e; transform: translateY(-1px); }
 .drawer-cta { width: 100%; margin-top: 8px; padding: 12px; font-size: .95rem; border-radius: var(--r); }
 
 /* Hamburger */
