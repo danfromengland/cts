@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beaches Local Toronto — Technology for the Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <!-- ── Navigation ──────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+
+      <a href="#" class="logo-wrap" aria-label="Beaches Local Toronto home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="24" r="24" fill="#1d4ed8"/>
+          <circle cx="24" cy="18" r="5.5" fill="#fcd34d"/>
+          <circle cx="24" cy="18" r="8.5" fill="#fcd34d" fill-opacity="0.22"/>
+          <path d="M4 32 Q10 26 17 32 Q24 38 31 32 Q38 26 44 32" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M4 38 Q10 32 17 38 Q24 44 31 38 Q38 32 44 38" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="logo-text">
+          <span class="logo-name">Beaches Local</span>
+          <span class="logo-city">Toronto</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="nav-weather" id="navWeather" aria-live="polite">
+          <span id="navWeatherIcon">—</span>
+          <span id="navWeatherTemp"></span>
+        </div>
+        <button class="nav-cta" onclick="scrollToContact()">Get in Touch</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+    <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+      <a href="#services" onclick="closeMenu()">Services</a>
+      <a href="#about"    onclick="closeMenu()">About</a>
+      <a href="#contact"  onclick="closeMenu()">Contact</a>
+      <button class="nav-cta drawer-cta" onclick="closeMenu(); scrollToContact()">Get in Touch</button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <!-- Background layers -->
+    <div class="hero-backdrop">
+      <div class="hb-grid"></div>
+      <div class="hb-glow glow-a"></div>
+      <div class="hb-glow glow-b"></div>
+    </div>
+
+    <div class="hero-inner container">
+
+      <div class="hero-copy" data-reveal>
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          Proudly Serving The Beaches, Toronto
+        </div>
+
+        <h1 class="hero-h1">
+          <span class="line">Local Expertise.</span>
+          <span class="line accent-line">Global Standards.</span>
+        </h1>
+
+        <p class="hero-lead">Beaches Local Toronto delivers world-class digital solutions to businesses rooted in our community. Technology that works as hard as you do.</p>
+
+        <div class="hero-ctas">
+          <button class="btn-hero" id="heroBtn" onclick="cycleHeroText()">
+            <span id="heroBtnLabel">Start Your Project</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a href="#about" class="btn-ghost-hero">Our Story</a>
+        </div>
+
+        <!-- Weather card -->
+        <div class="weather-pill" id="weatherPill">
+          <div class="wp-loading" id="wpLoading">
+            <div class="wp-spinner"></div>
+            <span>Loading Toronto weather…</span>
+          </div>
+          <div class="wp-data" id="wpData" hidden>
+            <span class="wp-emoji"  id="wpEmoji">☀️</span>
+            <span class="wp-temp"   id="wpTemp">—</span>
+            <span class="wp-sep">·</span>
+            <span class="wp-desc"   id="wpDesc">—</span>
+            <span class="wp-sep">·</span>
+            <span class="wp-wind">Wind <span id="wpWind">—</span> km/h</span>
+            <span class="wp-sep">·</span>
+            <span class="wp-loc">Toronto, ON</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-reveal data-delay="180">
+        <!-- Decorative rings -->
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <!-- Central orb -->
+        <div class="hero-orb">
+          <svg viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            <circle cx="50" cy="32" r="10" fill="#fcd34d" opacity="0.95"/>
+            <circle cx="50" cy="32" r="16" fill="#fcd34d" opacity="0.15"/>
+            <path d="M8 66 Q20 56 33 66 Q46 76 58 66 Q72 56 84 66 Q90 70 94 66" stroke="#fcd34d" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M8 78 Q20 68 33 78 Q46 88 58 78 Q72 68 84 78" stroke="rgba(252,211,77,0.35)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <!-- Floating stat cards -->
+        <div class="fcard fcard-tl" data-reveal data-delay="360">
+          <span class="fcard-icon">🏖️</span>
+          <div><div class="fcard-val">Est. 2010</div><div class="fcard-sub">The Beaches, TO</div></div>
+        </div>
+        <div class="fcard fcard-tr" data-reveal data-delay="480">
+          <span class="fcard-icon">⭐</span>
+          <div><div class="fcard-val">5-Star Rated</div><div class="fcard-sub">300+ clients</div></div>
+        </div>
+        <div class="fcard fcard-bl" data-reveal data-delay="600">
+          <span class="fcard-icon">🛡️</span>
+          <div><div class="fcard-val">ISO Certified</div><div class="fcard-sub">Enterprise grade</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="sh-line"></div>
+    </div>
+  </section>
+
+  <!-- ── Ticker ───────────────────────────────────────── -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>✦ Trusted by 300+ Toronto businesses</span>
+      <span>✦ 15+ years in The Beaches</span>
+      <span>✦ ISO 27001 Certified</span>
+      <span>✦ 98% client retention</span>
+      <span>✦ 24 / 7 local support</span>
+      <span>✦ Award-winning team</span>
+      <!-- duplicate for seamless loop -->
+      <span>✦ Trusted by 300+ Toronto businesses</span>
+      <span>✦ 15+ years in The Beaches</span>
+      <span>✦ ISO 27001 Certified</span>
+      <span>✦ 98% client retention</span>
+      <span>✦ 24 / 7 local support</span>
+      <span>✦ Award-winning team</span>
+    </div>
+  </div>
+
+  <!-- ── Services ─────────────────────────────────────── -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="sh" data-reveal>
+        <span class="eyebrow">What We Do</span>
+        <h2>Services Built for<br>Toronto Businesses</h2>
+        <p>From Queen Street East to the boardwalk — we power the technology behind local success.</p>
+      </div>
+
+      <div class="service-grid">
+
+        <article class="scard" data-reveal data-delay="0">
+          <div class="scard-num">01</div>
+          <div class="scard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>Digital Infrastructure</h3>
+          <p>Reliable, scalable IT foundations for growing Toronto businesses — cloud, network, and security engineered to enterprise standards.</p>
+          <ul>
+            <li>Cloud migration &amp; management</li>
+            <li>Network design &amp; monitoring</li>
+            <li>Disaster recovery planning</li>
+          </ul>
+          <a href="#contact" class="scard-link">
+            Learn more
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="scard scard-featured" data-reveal data-delay="140">
+          <div class="scard-badge">Most Popular</div>
+          <div class="scard-num">02</div>
+          <div class="scard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <h3>Custom Software</h3>
+          <p>Bespoke web and mobile applications built around your business. Modern, fast, and designed to grow with you.</p>
+          <ul>
+            <li>Web &amp; mobile applications</li>
+            <li>API design &amp; integrations</li>
+            <li>Legacy system modernisation</li>
+          </ul>
+          <a href="#contact" class="scard-link">
+            Learn more
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+        <article class="scard" data-reveal data-delay="280">
+          <div class="scard-num">03</div>
+          <div class="scard-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Cyber Security</h3>
+          <p>Protect your business from evolving threats. Our experts keep you compliant, resilient, and ahead of risk.</p>
+          <ul>
+            <li>Penetration testing</li>
+            <li>Security operations centre</li>
+            <li>Compliance &amp; risk management</li>
+          </ul>
+          <a href="#contact" class="scard-link">
+            Learn more
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ─────────────────────────────────────────── -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+
+      <div class="about-vis" data-reveal>
+        <div class="av-frame">
+          <div class="av-pattern"></div>
+          <div class="av-card av-card-a">
+            <span>🌊</span>
+            <div>
+              <strong>The Beaches, Toronto</strong>
+              <span>Our home since 2010</span>
+            </div>
+          </div>
+          <div class="av-card av-card-b">
+            <span>🏆</span>
+            <div>
+              <strong>Best Local Tech 2024</strong>
+              <span>Toronto Business Awards</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-copy" data-reveal data-delay="180">
+        <span class="eyebrow">Who We Are</span>
+        <h2>Born in The Beaches.<br>Built for Toronto.</h2>
+        <p>Since 2010, Beaches Local Toronto has been the go-to technology partner for businesses in our community. We believe the best work happens when your tech partner genuinely understands your neighbourhood.</p>
+        <p>We're not a faceless corporation — we're your neighbours on Queen Street East.</p>
+
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num"><span class="counter" data-target="15">0</span><span>+</span></div>
+            <div class="stat-lbl">Years Local</div>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <div class="stat-num"><span class="counter" data-target="300">0</span><span>+</span></div>
+            <div class="stat-lbl">Clients Served</div>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <div class="stat-num"><span class="counter" data-target="98">0</span><span>%</span></div>
+            <div class="stat-lbl">Retention Rate</div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-solid">
+          Work With Us
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Contact ───────────────────────────────────────── -->
+  <section class="section contact" id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-copy" data-reveal>
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Let's Build Something Together</h2>
+        <p>Ready to transform your business? Our team responds within one business day.</p>
+
+        <div class="cdetails">
+          <a class="cdetail" href="tel:+14165430081">
+            <div class="cdetail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.18 2 2 0 012.11 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <div><div class="cdetail-lbl">Call Us</div><div class="cdetail-val">+1 (416) 543 0081</div></div>
+          </a>
+          <a class="cdetail" href="mailto:hello@beacheslocal.ca">
+            <div class="cdetail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><div class="cdetail-lbl">Email</div><div class="cdetail-val">hello@beacheslocal.ca</div></div>
+          </a>
+          <div class="cdetail">
+            <div class="cdetail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><div class="cdetail-lbl">Visit Us</div><div class="cdetail-val">2148 Queen St E, Toronto, ON</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap" data-reveal data-delay="200">
+        <form id="contactForm" onsubmit="submitForm(event)" novalidate>
+          <h3>Send a Message</h3>
+          <div class="frow">
+            <div class="fg">
+              <label for="fName">First Name</label>
+              <input type="text" id="fName" placeholder="Jane" required>
+            </div>
+            <div class="fg">
+              <label for="lName">Last Name</label>
+              <input type="text" id="lName" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@company.com" required>
+          </div>
+          <div class="fg">
+            <label for="service">Service Interest</label>
+            <select id="service">
+              <option value="">Select a service…</option>
+              <option>Digital Infrastructure</option>
+              <option>Custom Software</option>
+              <option>Cyber Security</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="msg">Message</label>
+            <textarea id="msg" rows="4" placeholder="Tell us about your project…" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span id="submitLabel">Send Message</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <div class="form-ok" id="formOk" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Thanks! We'll be in touch within one business day.</span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="#" class="logo-wrap" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="24" fill="#1d4ed8"/>
+            <circle cx="24" cy="18" r="5.5" fill="#fcd34d"/>
+            <circle cx="24" cy="18" r="8.5" fill="#fcd34d" fill-opacity="0.22"/>
+            <path d="M4 32 Q10 26 17 32 Q24 38 31 32 Q38 26 44 32" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M4 38 Q10 32 17 38 Q24 44 31 38 Q38 32 44 38" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-name">Beaches Local</span>
+            <span class="logo-city">Toronto</span>
+          </div>
+        </a>
+        <p>Technology with a local heart. Serving The Beaches and greater Toronto since 2010.</p>
+        <div class="footer-weather" id="footerWeather">
+          <span id="fwIcon">—</span>
+          <span id="fwTemp">—</span>
+          <span id="fwDesc"></span>
+          <span class="fw-loc">Toronto right now</span>
+        </div>
+      </div>
+
+      <div class="fcol">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Digital Infrastructure</a></li>
+          <li><a href="#services">Custom Software</a></li>
+          <li><a href="#services">Cyber Security</a></li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="fcol">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bar">
+      <div class="container footer-bar-inner">
+        <span>&copy; 2026 Beaches Local Toronto. All rights reserved.</span>
+        <span>2148 Queen St E, The Beaches, Toronto ON M4E 1G4</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
