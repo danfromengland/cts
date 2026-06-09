@@ -334,7 +334,9 @@ p  { line-height: 1.7; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--ink);
+  background:
+    linear-gradient(to bottom, rgba(8,15,30,.72) 0%, rgba(8,15,30,.80) 60%, rgba(8,15,30,.92) 100%),
+    url('https://images.unsplash.com/photo-1688130564911-4d3bd6b12cea?w=1920&q=85&fit=crop') center/cover no-repeat;
   overflow: hidden;
   padding: 100px 0 80px;
 }
